@@ -9,6 +9,5 @@ public class Carrello {
         this.codiceCliente = codiceCliente;
         this.prezzoTotale = prezzoTotale;
         this.articoli = articoli;
-        //commento
     }
 }
