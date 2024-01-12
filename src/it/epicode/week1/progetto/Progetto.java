@@ -55,16 +55,14 @@ public class Progetto {
         String[] stringhe = (scelta == 3) ? new String[]{"la luminosità"} : new String[]{"il volume", "la luminosità"};
 
         // Qui gestisco i valori da passare all'inizializzazione dell'elemento oltre al titolo
-        int valori = (scelta == 2) ? 2 : 1;
+        int[] valori = (scelta == 2) ? new int[2] : new int[1];
 
-        // Dichiaro un array di lunghezza pari al numero di valori da passare oltre al titolo, stabilito nello switch precedente
-        int[] valoriScelti = new int[valori];
         // Per ogni valore richiesto uso lo scanner, e l'array stringhe mi torna utile per chiedere rapidamente i valori all'utente
-        for (int i = 0; i < valori; i++) {
+        for (int i = 0; i < valori.length; i++) {
             do {
                 System.out.println("Inserisci " + stringhe[i]);
-                valoriScelti[i] = scanner.nextInt();
-            } while (valoriScelti[i] < 0);
+                valori[i] = scanner.nextInt();
+            } while (valori[i] < 0);
         }
         // Mando a capo solo per una questione estetica
         System.out.println();
@@ -72,21 +70,18 @@ public class Progetto {
         // In base alla scelta fatta, istanzio l'oggetto corrispondente con il giusto numero di parametri da passare
         switch (scelta) {
             case 1:
-                return new Audio(titolo, valoriScelti[0]);
+                return new Audio(titolo, valori[0]);
             case 2:
-                return new Video(titolo, valoriScelti[0], valoriScelti[1]);
+                return new Video(titolo, valori[0], valori[1]);
             case 3:
-                return new Immagine(titolo, valoriScelti[0]);
+                return new Immagine(titolo, valori[0]);
         }
 
-        /* Java considera lo switch un controllo limitato poichè non sa che io ho comunque inserito tutti i controlli
-        necessari affinchè gli unici 3 possibili valori passati siano 1, 2 o 3. Dunque faccio un return che però si rivela
-        inutile e mai utilizzato dal programma */
         return null;
     }
 
     /* ESEMPIO PRATICO:
-    scelta == 1: viene passato al metodo successivo. La variabile valori sarà 1 e l'array valoriScelti avrà 1 solo elemento.
+    scelta == 1: viene passato al metodo successivo. L'array valori avrà 1 solo elemento.
     Il ciclo farà una sola iterazione e chiederà "Inserisci " + il valore di stringhe alla prima posizione (0), quindi "il volume".
     Istanzio un audio
 
