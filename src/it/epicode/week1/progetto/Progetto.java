@@ -68,16 +68,13 @@ public class Progetto {
         System.out.println();
 
         // In base alla scelta fatta, istanzio l'oggetto corrispondente con il giusto numero di parametri da passare
-        switch (scelta) {
-            case 1:
-                return new Audio(titolo, valori[0]);
-            case 2:
-                return new Video(titolo, valori[0], valori[1]);
-            case 3:
-                return new Immagine(titolo, valori[0]);
-        }
+        return switch (scelta) {
+            case 1 -> new Audio(titolo, valori[0]);
+            case 2 -> new Video(titolo, valori[0], valori[1]);
+            case 3 -> new Immagine(titolo, valori[0]);
+            default -> null;
+        };
 
-        return null;
     }
 
     /* ESEMPIO PRATICO:
