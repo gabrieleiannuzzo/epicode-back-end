@@ -74,7 +74,6 @@ public class Progetto {
             case 3 -> new Immagine(titolo, valori[0]);
             default -> null;
         };
-
     }
 
     /* ESEMPIO PRATICO:
