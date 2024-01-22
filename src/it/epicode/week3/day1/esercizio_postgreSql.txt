@@ -1,0 +1,8 @@
+select * from public.clienti where nome = 'Mario'
+select nome, cognome from public.clienti where anno_di_nascita = 1982
+select count(*) from public.fatture where iva = 20
+select * from public.prodotti where extract(year from data_attivazione) = 2017 and (in_produzione = true or in_commercio = true)
+select * from public.fatture inner join public.clienti on numero_cliente = id_cliente where importo < 1000
+select fa.numero_fattura, fa.importo, fa.iva, fa.data_fattura, fo.denominazione from public.fatture fa inner join public.fornitori fo on fa.numero_fornitore = fo.numero_fornitore
+select count(*) from public.fatture where iva = 20 group by extract(year from data_fattura)
+select count(*), sum(importo) from public.fatture group by extract(year from data_fattura)
